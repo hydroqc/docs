@@ -2,6 +2,14 @@
 image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 # Functions that should be executed before the build script is run
 
+default:
+  before_script:
+    - apk add --update --no-cache git go npm
+    - npm install -D autoprefixer
+    - npm install -D postcss-cli
+    - npm install -D postcss
+
+
 pages:
   script:
     - hugo
