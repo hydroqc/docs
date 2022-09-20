@@ -1,0 +1,8 @@
+---
+title: Configuration
+linkTitle: Configuration
+weight: 20
+description: |
+  Documentation for configuration options
+lastmod: 2022-09-20T13:08:04.762Z
+---
