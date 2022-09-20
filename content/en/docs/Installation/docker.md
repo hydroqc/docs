@@ -4,7 +4,7 @@ linkTitle: Docker
 weight: 12
 description: |
   Install with docker
-lastmod: 2022-09-20T15:18:15.379Z
+lastmod: 2022-09-20T18:13:47.527Z
 ---
 
 Edit the environment variable in the following command to start the project.
@@ -27,7 +27,7 @@ docker run -d --restart=always --name hydroqc2mqtt \
 registry.gitlab.com/hydroqc/hydroqc2mqtt
 ```
 
-```docker-compose.yaml
+```yaml
 version: "3"
 services:
   hydroqc2mqtt:
@@ -38,7 +38,7 @@ services:
       MQTT_PASSWORD: 'yourmqttpassword'
       MQTT_HOST: 'yourmqttserver'
       MQTT_PORT: '1883'
-      HQ2M_CONTRACTS_0_NAME:'maison'
+      HQ2M_CONTRACTS_0_NAME: 'maison'
       HQ2M_CONTRACTS_0_USERNAME: 'HQUsername'
       HQ2M_CONTRACTS_0_PASSWORD: 'HQPassword'
       HQ2M_CONTRACTS_0_CUSTOMER: 'HQCustomerNo'
