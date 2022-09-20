@@ -175,11 +175,11 @@ enable = false
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
-[[params.links.user]]
-  name = "Discord"
-  url = "https://discord.gg/JaRfRJEByz"
-  icon = "fab fa-discord"
-  desc = "Discussion and help from your fellow users"
+#[[params.links.user]]
+#  name = "Discord"
+#  url = "https://discord.gg/JaRfRJEByz"
+#  icon = "fab fa-discord"
+#  desc = "Discussion and help from your fellow users"
 #[[params.links.user]]
 #  name ="Twitter"
 #  url = "https://example.org/twitter"
@@ -198,9 +198,9 @@ enable = false
   desc = "Development takes place here!"
 [[params.links.developer]]
   name = "Discord"
-  url = "https://discord.gg/NWnfdfRZ7T"
+  url = "https://discord.gg/JaRfRJEByz"
   icon = "fab fa-discord"
-  desc = "Chat with other project developers"
+  desc = "Discussion and help from your fellow users"
 
 # hugo module configuration
 
