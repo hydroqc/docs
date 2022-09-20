@@ -4,7 +4,7 @@ linkTitle: Optimization logic
 weight: 45
 description: |
   Optimization logic
-lastmod: 2022-09-20T17:59:46.474Z
+lastmod: 2022-09-20T18:01:35.086Z
 ---
 
 
@@ -17,13 +17,13 @@ http://publicsde.regie-energie.qc.ca/projets/469/DocPrj/R-4057-2018-B-0062-DDR-R
 
 The instruction from Hydro-Quebec in regards to the winter credit is to move the consumption that would occur during the critical peak period to the rest of the day. 
 
-Before the critical peak:
-	They recommend to raise your thermostat setpoints a few hours before the critical peak period to pre-heat the house.
+**Before the critical peak**
+They recommend to raise your thermostat setpoints a few hours before the critical peak period to pre-heat the house.
 
-During the peak:
+**During the peak**
 	Reduce the thermostat setpoint and avoid using power hungry appliances (electric oven, kettle, hot water heater, electric vehicule charger, etc)
 
-After the peak:
+**After the peak**
 	Resume your normal consumption.
 
 ### Critical Peak day optimisation
