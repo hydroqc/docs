@@ -7,7 +7,11 @@ description: |
 lastmod: 2022-09-22T12:38:37.777Z
 ---
 
-Edit the environment variable in the following command to start the project. You can find more info
+If you are on unraid devzwf created a community app to install the hydroqc2mqtt 
+ - [hydroqc2mqtt Unraid app](https://unraid.net/community/apps?q=hydroqc2mqtt)
+ - [Unraid app specific support](https://forums.unraid.net/topic/129079-support-devzwf-hydroqc2mqtt)
+
+Edit the environment variable in the following command to start the project.
 
 ```bash
 docker run -d --restart=always --name hydroqc2mqtt \
