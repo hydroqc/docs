@@ -25,8 +25,8 @@ lastmod: 2022-09-22T13:04:37.315Z
 3. Install requirements and module
 
    ```bash
-   pip install --editable -r requirements.txt --no-cache-dir --force
-   python setup.py develop
+   pip install --upgrade setuptools_scm
+   pip install .
    ```
 
 4. Copy and change the configuration or use environement variable.
