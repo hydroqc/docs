@@ -2,7 +2,7 @@
 title: Known issues
 linkTitle: Known issues
 weight: 52
-description: |
+description: >
   Issues we are aware of and their workarounds when available
 lastmod: 2022-09-21T18:41:22.563Z
 ---
@@ -17,16 +17,16 @@ Sometimes if issues are encountered when configuring hydroqc2mqtt (or the addon)
 
 You can resolve this by doing the following
 
-- Stop hydroqc2mqtt or the addon
+1. Stop hydroqc2mqtt or the addon
 
-- Leave mqtt running
+2. Leave mqtt running
 
-- Go in the mqtt integration in Home-Assistant and open the hydroqc entity
+3. Go in the mqtt integration in Home-Assistant and open the hydroqc entity
 
-- In the "Device Info" box click on the three dots and click "Delete"
+4. In the "Device Info" box click on the three dots and click "Delete"
   This will remove all the hydroqc entities in Home-Assistant and in mqtt.
 
-- You can then start hydroqc2mqtt or the addon and all entities will be recreated without the duplicates.
+5. You can then start hydroqc2mqtt or the addon and all entities will be recreated without the duplicates.
 
 ## `binascii.Error: Incorrect padding` error
 
