@@ -2,8 +2,8 @@ baseURL = "/"
 title = "HydroQC"
 
 # Language settings
-contentDir = "content/en"
-defaultContentLanguage = "en"
+contentDir = "content"
+defaultContentLanguage = "fr"
 defaultContentLanguageInSubdir = true
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
@@ -11,7 +11,7 @@ enableMissingTranslationPlaceholders = true
 enableRobotsTXT = true
 
 # Will give values to .Lastmod etc.
-enableGitInfo = true
+enableGitInfo = false
 
 # Comment out to enable taxonomies in Docsy
 # disableKinds = ["taxonomy", "taxonomyTerm"]
@@ -63,14 +63,15 @@ id = "G-HGJB06F9HS"
 title = "HydroQC"
 description = "HydroQC documentation"
 languageName ="English"
+contentDir = "content/en"
 # Weight used for sorting.
 weight = 1
-#[languages.fr]
-#title = "HydroQC"
-#description = "Documentation HydroQC"
-#languageName ="Français"
-#contentDir = "content/fr"
-#time_format_default = "2006-01-02"
+[languages.fr]
+title = "HydroQC"
+description = "Documentation HydroQC"
+languageName ="Français"
+contentDir = "content/fr"
+time_format_default = "2006-01-02"
 
 
 

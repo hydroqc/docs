@@ -8,37 +8,48 @@ description: >
 lastmod: 2022-09-20T23:56:58.290Z
 ---
 
-{{% alert title="Note" %}}A Home-Assistant blueprint implementing these logics is available [here](https://raw.githubusercontent.com/hydroqc/hass-blueprint-hydroqc/main/hydroqc-winter-credits.yaml) or with the magic button here: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fraw.githubusercontent.com%2Fhydroqc%2Fhass-blueprint-hydroqc%2Fmain%2Fhydroqc-winter-credits.yaml){{% /alert %}}
+{{% alert title="Note" %}}A Home-Assistant blueprint with the option to implement these logics is available [here](https://raw.githubusercontent.com/hydroqc/hass-blueprint-hydroqc/main/hydroqc-winter-credits.yaml) or with the magic button here: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fraw.githubusercontent.com%2Fhydroqc%2Fhass-blueprint-hydroqc%2Fmain%2Fhydroqc-winter-credits.yaml){{% /alert %}}
 
-The following information is derived from the following document and formula from the "Régie de l'énergie" filing:
+The following information is derived from the formulas from this "Régie de l'énergie" filing:
 
 http://publicsde.regie-energie.qc.ca/projets/469/DocPrj/R-4057-2018-B-0062-DDR-RepDDR-2018_10_26.pdf#page=127
 
-### Basic critical peak logic
+## Overview
+
+The winter credit program implement a set of calculations to estimate the real amount of energy you saved during a critical peak event. In short, they use the consumption from the five previous days of the same kind that did not have a critical event (five last weekdays or five last weekend days) to estimate a regular consumption.
+
+They will then estimate the "Temperature effect" using the difference between a set period called the "anchor" period. By comparing the anchor period on the day of the critical event with the ones from the previous five days they are able to estimate how much additionnal consumption is caused by the cooler temperature and add it to the offset energy.
+
+## Basic critical peak logic
 
 The instruction from Hydro-Quebec in regards to the winter credit is to move the consumption that would occur during the critical peak period to the rest of the day. 
 
-**Before the critical peak**
+##### Before the critical peak
 They recommend to raise your thermostat setpoints a few hours before the critical peak period to pre-heat the house.
 
-**During the peak**
+##### During the peak
 	Reduce the thermostat setpoint and avoid using power hungry appliances (electric oven, kettle, hot water heater, electric vehicule charger, etc)
 
-**After the peak**
+##### After the peak
 	Resume your normal consumption.
 
 ```mermaid
 graph TD
-	      NormalStart[Consommation Normale] -->PeakStart
-	      PeakStart[Début pointe<br/>6h ou 16h] -->PeakCritical{Critique?}
-	      PeakCritical -->|Oui| PeakLowCon[Réduire consommation] 
-	      PeakCritical -->|Non| PeakHighCon[Aucun changement]
-	      
-	      PeakHighCon --> PeakEnd
-	      PeakLowCon --> PeakEnd
-	      PeakEnd[Fin de pointe<br/>9h ou 20h] --> NormalEnd[Consommation Normale]
+  NormalStart[Normal consumption] --> UpcomingCriticalPeak[Upcoming critical peak?]
+  UpcomingCriticalPeak -->|Yes| PreHeatStart
+  UpcomingCriticalPeak -->|No| NormalEnd
+  PreHeatStart[Pre-heat]-->PeakStart
+  PeakStart[Peak start<br/>6AM or 4PM] -->PeakLowCon[Reduce consumption] 
+  PeakLowCon --> PeakEnd
+  PeakEnd[Peak end<br/>9AM or 8PM] --> NormalEnd[Normal consumption]
 
 ```
+
+## Optimizations
+
+The following logics influence the calculations used to estimate the energy offset during critical peaks.
+
+The diagrams below does not include pre-heating, but it should be added before the critical peaks as needed.
 
 ### Critical Peak day optimisation
 
@@ -59,14 +70,40 @@ graph TD
 	      AnchorEnd[Fin d'ancrage<br/>4h ou 14h] --> Normal(Consommation Normale)
 ```
 
+### Long term anchor optimisation
 
-### Maximum return optimisation
+By reducing your consumption during anchor periods every day you increase the difference in consumption of the next critical peak anchor period which results in more calculated energy offset during a peak event. This optimisation is low-risk since it only involves reducing your consumption further.
 
-This optimisation logic is the one that will give you the highest returns from the winter credits program. 
+```mermaid
+graph TD
+	      NormalStart[Consommation Normale] -->PeakStart & AnchorStart
+	      PeakStart[Début pointe<br/>6h ou 16h] -->PeakCritical{Critique?}
+	      PeakCritical -->|Oui| PeakLowCon[Réduire consommation] 
+
+	  
+	      AnchorStart[Début Ancrage<br/>1h ou 11h] -->AnchorCritical{Critique?}
+	      AnchorCritical -->|Non| AnchorLowCon[Réduire la consommation]
+	      AnchorCritical -->|Oui| AnchorHighCon[Augmente la consommation]
+
+	      PeakLowCon --> PeakEnd
+	      AnchorHighCon --> AnchorEnd
+	      AnchorLowCon --> AnchorEnd
+	      PeakEnd[Fin de pointe<br/>9h ou 20h] --> Normal
+	      AnchorEnd[Fin d'ancrage<br/>4h ou 14h] --> Normal(Consommation Normale)
+```
+
+
+### Maximum Credits Optimisation
+
+{{< alert color="warning" title="Warning" >}}If implemented without a thourough analysis of its impact, this logic may endup increasing your consumption, partially offsetting your winter credit savings. It may also result in higher EPP payment at your next revision, even if your Winter Credits offset that increase.
+
+We do not encourage you to use it as it is a bit against the spirit of the winter credit program. The Long term anchor optimisation descibed above is safer to implement and more inline with the objectives of the program.{{< /alert >}}
+
+This optimisation logic is the one that will give you the highest returns from the winter credits program.
 
 This logic involves moving your consumption not only on days when there is a critical peak event but everyday in order to influence the reference period that is used to estimate the energy offset during critical peak period.
 
-We do not encourage you to use it as it is a bit against the spirit of the winter credit program.
+
 
 ```mermaid
 graph TD

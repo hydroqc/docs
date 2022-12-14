@@ -1,0 +1,28 @@
+---
+title: Capteurs crédit hivernaux
+linkTitle: Capteurs crédit hivernaux
+weight: 47
+description: |
+  Description des capteurs crédit hivernaux
+lastmod: 2022-09-21T20:32:18.125Z
+---
+
+## Description des capteurs
+
+Voici la description de certains des capteurs en liens avec les crédits hivernaux. Vous devez être prudent lorsque vous utilisez les valeurs d'état actuelles car elles sont mises à jour uniquement lorsque nous actualisons les données toutes les 1 minutes. C'est un comportement que nous voulons améliorer [(issue #5)](https://gitlab.com/hydroqc/hydroqc2mqtt/-/issues/5). En attendant, vous pouvez utiliser les valeurs d'heure de démarrage / fin pour des automatisations plus précises. Si vous voulez plus de détails sur les logiques de chaque période, vous pouvez obtenir plus de détails ici: [logique pour les crédits hivernaux](/fr/docs/winter-credits/)
+
+| Nom du capteur | Valeurs | Description |
+|-|-|-|
+|Current period state for winter credit / current wc period detail | anchor / normal / peak / anchor_critical / peak_critical | Nom de la période et état actuel **Gardez en tête que cela est mis à jour toutes les 1 minutes.** |
+| wc next anchor start / end | timestamp | L'heure où la prochaine période d'ancrage commence et se termine. Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. |
+| wc next peak start / end | timestamp | L'heure où la prochaine période de pointe commence et se termine.Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. |
+| wc next critical peak start / end | timestamp | L'heure où la prochaine période de pointe commence et se termine.Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. Sera "Indisponible" si la prochaine pointe n'est pas critique |
+| wc upcoming_critical_peak | true/false | Y a-t-il une pointe critique à venir.Sera True dès que nous détecterons une annonce d'Hydro-Québec et reviendra à False une fois qu'il n'y aura pas de pointe critique à venir.|
+| wc critical peak in progress | true/false | Sommes-nous dans une pointe critique en ce moment. **Gardez en tête que cela est mis à jour toutes les 1 minutes.**|
+| wc next anchor critical | true/false | Est-ce que la prochaine période d'ancrage est liée à une pointe critique? Sera true de la fin de la dernière pointe à la fin de la prochaine pointe si la prochaine pointe est critique.|
+| wc next peak critical | true/false | Est-ce que la prochaine pointe est critique? Sera true de la fin de la dernière pointe à la fin de la prochaine pointe si la prochaine pointe est critique.
+| wc upcoming critical peak today/tomorrow morning/evening | true/false | Est-ce qu'il y a une pointe critique planifiée dans la période spécifiée.Restera true/false jusqu'à la fin de la journée en question |
+| wc yesterday morning/evening * | various | Les valeurs (crédit, énergie de référence, énergie effacée, consommation réelle) pour les pointes critiques qui se sont produits hier. Ne sera pas disponible s'il n'y avait pas de pointe critique la veille. |
+| wc critical | true/false | Sera true de la fin de la dernière pointe à la fin de la prochaine pointe si la prochaine pointe est critique. Puisqu'il s'agit d'un double de "Next Peak Critical", il sera éventuellement supprimé |
+
+

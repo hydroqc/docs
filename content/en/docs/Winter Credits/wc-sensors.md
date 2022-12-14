@@ -1,7 +1,7 @@
 ---
 title: Winter Credit Sensors
 linkTitle: Winter Credit Sensors
-weight: 35
+weight: 47
 description: |
   Winter Credits specific sensor description.
 lastmod: 2022-09-21T20:32:18.125Z

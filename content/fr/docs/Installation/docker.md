@@ -3,13 +3,13 @@ title: Docker
 linkTitle: Docker
 weight: 12
 description: |
-  Install with docker
+  Installation avec docker
 lastmod: 2022-09-22T12:38:37.777Z
 ---
 
 
 
-Edit the environment variable in the following command to start the project.
+Modifiez les variables d'environnement suivantes et démarrer le conteneur.
 
 ```bash
 docker run -d --restart=always --name hydroqc2mqtt \
@@ -29,7 +29,7 @@ docker run -d --restart=always --name hydroqc2mqtt \
 registry.gitlab.com/hydroqc/hydroqc2mqtt
 ```
 
-You can also use the following `docker-compose.yaml` file in a folder and run `docker-compose up -d`.
+Vous pouvez également placer le fichier `docker-compose.yaml` dans un dossier et exécuter `docker-compose up -d`.
 
 ```yaml
 version: "3"
@@ -54,6 +54,7 @@ services:
 ```
 
 ### Unraid
-If you are on unraid devzwf created a community app to install the hydroqc2mqtt 
+
+Si vous utilisez Unraid, devzwf a créé une application Unraid pour faire l'installation 
  - [hydroqc2mqtt Unraid app](https://unraid.net/community/apps?q=hydroqc2mqtt)
- - [Unraid app specific support](https://forums.unraid.net/topic/129079-support-devzwf-hydroqc2mqtt)
+ - [Support Unraid app](https://forums.unraid.net/topic/129079-support-devzwf-hydroqc2mqtt)
