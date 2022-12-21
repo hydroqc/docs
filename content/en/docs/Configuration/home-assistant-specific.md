@@ -4,21 +4,24 @@ linkTitle: Home-Assistant
 weight: 28
 description: |
   Home-Assistant specific configuration for hydroqc2mqtt
-lastmod: 2022-12-16T08:16:18.099Z
+lastmod: 2022-12-21T20:33:50.556Z
 ---
 
 ## Hourly Consumption in Energy Dashboard
 
 {{< alert color="warning">}}**Hourly consumption from Hydro-Quebec is not live.** The hourly consumption will sync automatically when it is available from Hydro-Quebec. On the website you can only see the hourly consumption from the previous day. With hydroqc2mqtt you will sometime be able to see consumption of the current day. There is always a delay of a few hours before HQ publishes the information.{{< /alert >}}
 
-When you enable sync of the hourly consumption a sensor is created in Home-Assistant named "Hourly Consumption" (sensor.hydroqc_maison_hourly_consumption).
+When you enable sync of the hourly consumption one or more sensors are created in Home-Assistant named "Hourly Consumption".
 
 {{< alert color="warning">}}**The "Houly Consumption" sensor will always have a state of "unknown".** We do not have a state for it, we need to create it in order to push the statistics to it and for it to be available to add to the Energy Dashboard, but there will never be a value for it.
+![img](/images/configuration/home-assistant-1.png)
 {{< /alert >}}
 
-In the Energy Dashboard you will have to use this sensor in the "Grid Consumption" section.
+### Rate D and D with CPC option (winter credits)
 
-![img](/images/configuration/home-assistant-1.png)
+In the Energy Dashboard you will have to use the "Total Hourly Consumption" sensor in the "Grid Consumption" section.
+
+### Flex-D and DT (dual energy)
 
 For FlexD and Bi-Energy rates you can put the sensors "High price hourly consumption" and "Reg price hourly consumption". This will allow you to distinguish the two types of consumption in the dashboard.
 

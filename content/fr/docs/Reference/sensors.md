@@ -4,7 +4,7 @@ linkTitle: Capteurs
 weight: 32
 description: |
   Description des capteurs présent dans Home-Assistant
-lastmod: 2022-09-21T19:53:56.545Z
+lastmod: 2022-12-21T20:26:46.748Z
 ---
 
 ## Sensor Description
@@ -23,5 +23,5 @@ lastmod: 2022-09-21T19:53:56.545Z
 | Current billing period daily consumption mean | 60.5 kWh | Consommation moyenne par jour pour la période |
 | Current billing period kwh cost mean | CA$0.09 | Coût moyen
 | Current billing period lower price consumption | 1149 kWh | Consommation dans la braquette de prix basse |
-| Current billing period higher price consumption | 0 kWh | Consommation dans la braquette de prix basse |
+| Current billing period higher price consumption | 0 kWh | Consommation dans la braquette de prix élevée |
 | Current period epp enabled | On/Off | Inscription au mode de versement égaux |

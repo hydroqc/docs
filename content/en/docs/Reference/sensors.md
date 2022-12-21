@@ -4,7 +4,7 @@ linkTitle: Sensors
 weight: 32
 description: |
   HydroQC sensor description.
-lastmod: 2022-09-21T19:53:56.545Z
+lastmod: 2022-12-21T20:27:36.262Z
 ---
 
 ## Sensor Description
@@ -22,6 +22,6 @@ lastmod: 2022-09-21T19:53:56.545Z
 | Current billing period daily bill mean | CA$5.69 | Average cost per day for the period |
 | Current billing period daily consumption mean | 60.5 kWh | Average consumption per day for the period |
 | Current billing period kwh cost mean | CA$0.09 | Average cost
-| Current billing period lower price consumption | 1149 kWh | We are unsure, this is probably for Flex-D accounts |
-| Current billing period higher price consumption | 0 | We are unsure, this is probably for Flex-D accounts |
+| Current billing period lower price consumption | 1149 kWh | Consumption in the lower price bracket |
+| Current billing period higher price consumption | 0 | Consumption in the higher price bracket |
 | Current period epp enabled | On/Off | If you are subscribed to Equal Payment Plan |

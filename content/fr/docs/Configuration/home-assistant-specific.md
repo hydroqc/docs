@@ -4,21 +4,25 @@ linkTitle: Home-Assistant
 weight: 28
 description: |
   Configurations spécifiques à Home-Assistant
-lastmod: 2022-12-16T06:40:29.522Z
+lastmod: 2022-12-21T20:31:51.482Z
 ---
 
 ## Consommation horaire dans le tableau de bord énergétique
 
 {{< alert color="warning">}}**La consommation horaire d'Hydro-Québec n'est pas en direct.** La consommation horaire se synchronisera automatiquement lorsqu'elle sera disponible auprès d'Hydro-Québec. Dans le portail web d'Hydro-Québec, vous ne pouvez voir la consommation horaire que de la veille.Avec Hydroqc2MQTT, vous pourrez parfois voir la consommation du jour en cours. Il y a toujours un retard de quelques heures avant la publication des données.{{< /alert >}}
 
-Lorsque vous activez la synchronisation de la consommation horaire, un capteur est créé dans Home-Assistant nommé "hourly consumption" (sensor.hydroqc_maison_hourly_consomption).
+Lorsque vous activez la synchronisation de la consommation horaire, un ou plusiseurs capteur est créé dans Home-Assistant nommé "hourly consumption".
 
-{{< alert color="warning">}}**Le capteur "Houly Consumption" aura toujours un état "inconnu".** Nous n'avons pas d'état pour cela, nous devons le créer afin d'y pousser les statistiques et pour qu'il soit disponible à ajouter auTableau de bord énergétique, mais il n'aura jamais de valeur.
+{{< alert color="warning">}}**Les capteurs de consommation auront toujours un état "inconnu".** Nous n'avons pas d'état pour cela, nous devons le créer afin d'y pousser les statistiques et pour qu'il soit disponible à ajouter auTableau de bord énergétique, mais il n'aura jamais de valeur.
+![img](/images/configuration/home-assistant-1.png)
 {{< /alert >}}
 
-Dans le tableau de bord énergétique, vous devrez utiliser ce capteur dans la section "Consommation du réseau".
+### Tarif D et D avec option CPC (Crédits Hivernaux)
+Dans le tableau de bord énergétique, vous devrez utiliser le capteur "Total Hourly Consumption" dans la section "Consommation du réseau".
 
-![img](/images/configuration/home-assistant-1.png)
+
+
+### Tarifs Flex-D et DT (bi-énergie)
 
 Pour les tarif FlexD et Bi-Énergie vous pouvez mettre les capteurs "High price hourly consumption" et "Reg price hourly consumption". Ceci vous permettera de distinguer les deux types de consommation dans le tableau de bord.
 
