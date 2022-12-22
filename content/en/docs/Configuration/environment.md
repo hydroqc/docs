@@ -4,7 +4,7 @@ linkTitle: Environment Variable
 weight: 26
 description: |
   Environment variables
-lastmod: 2022-09-21T00:38:19.782Z
+lastmod: 2022-12-22T01:35:53.944Z
 ---
 
 ## Refresh interval
@@ -34,7 +34,7 @@ The refresh interval is an area we have greatly improved on since version 0.4.0.
 | HQ2M_CONTRACTS_0_CUSTOMER | string | `'0987654321'` | Customer number (Numéro de client) from your invoice. **10 digits, you may need to add a leading 0 to the value** Ex: '987 654 321' will be '0987654321'|
 | HQ2M_CONTRACTS_0_ACCOUNT | string | `'654321987654'` | Account Number (Numéro de compte) from your invoice |
 | HQ2M_CONTRACTS_0_CONTRACT | string | `'0123456789'` | Contract Number (Numéro de contrat) from your invoice. **10 digits, you may need to add a leading 0 to the value.** Ex: '123 456 789' will be '0123456789'
-
+| HQ2M_CONTRACTS_0_PREHEAT_DURATION_MINUTES | string | `'180'` | Duration of the pre-heat period'
 
 ## Home-Assistant specific variables
 

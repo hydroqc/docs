@@ -4,21 +4,23 @@ linkTitle: Winter Credit Sensors
 weight: 47
 description: |
   Winter Credits specific sensor description.
-lastmod: 2022-09-21T20:32:18.125Z
+lastmod: 2022-12-22T15:16:42.543Z
 ---
 
 ## Sensor Description
 
-Here is the description of some of the sensors we provide that we feel needed more details. You need to be careful when using the current state values since they get updated only when we refresh the data every 10 minutes. This is a behavior we want to improve [(issue #5)](https://gitlab.com/hydroqc/hydroqc2mqtt/-/issues/5). In the mean time you can use the start/end timestamp values for more precise automations. If you want more details about the logics of each period you can get more details here: [https://hydroqc.ca/docs/winter-credits/](https://hydroqc.ca/docs/winter-credits/)
+Here is the description of some of the sensors we provide that we feel needed more details. If you want more details about the logics of each period you can get more details [here](/en/docs/winter-credits/optimization-logics/).
+
+{{< alert color="warning" title="Avertissement" >}}The sensor which represents a current state (Current period state for winter credit / current wc period detail / wc critical peak in progress) are at risk of not being updated in a timely manner if any problem occur. For more reliability we recommend that you use the "timestamp" sensors to trigger your automation.{{< /alert >}}
 
 |Default HA name and MQTT Topic | Values | Description |
 |-|-|-|
-|Current period state for winter credit / current wc period detail | anchor / normal / peak / anchor_critical / peak_critical | Current period name and state **Be aware this is updated every 10mins.**|
+|Current period state for winter credit / current wc period detail | anchor / normal / peak / critical_anchor / critical_peak | Current period name and state|
 | wc next anchor start / end | timestamp | The timestamp for the next anchor period start and end. Can be used as triggers in home-assistant automations. Will always have a value |
 | wc next peak start / end | timestamp | The timestamp for the next peak period start and end. Can be used as triggers in home-assistant automations. Will always have a value |
 | wc next critical peak start / end | timestamp | The timestamp for the next critical peak period start and end. Can be used as triggers in home-assistant automations. Will be "Unavailable" when the next peak event is not critical |
 | wc upcoming_critical_peak | true/false | Is there any critical peak in the future. Will be true as soon as we detect an announcement from Hydro and will return to false once there is no critical peak in the future.|
-| wc critical peak in progress | true/false | Are we in a critical peak right now. **Be aware this is updated every 10mins.**|
+| wc critical peak in progress | true/false | Are we in a critical peak right now.|
 | wc next anchor critical | true/false | Is the next anchor period linked to a critical peak. Will be true from the end of the last peak to the end of the next peak if the next peak is critical.|
 | wc next peak critical | true/false | Is the next peak period critical. Will be true from the end of the last peak to the end of the next peak if the next peak is critical.|
 | wc upcoming critical peak today/tomorrow morning/evening | true/false | Is there a critical peak planed in the specified period. Will remain true/false until the end of the day |

@@ -4,7 +4,7 @@ linkTitle: Variables d'environement
 weight: 26
 description: |
   Variables d'environment
-lastmod: 2022-09-21T00:38:19.782Z
+lastmod: 2022-12-22T01:35:29.596Z
 ---
 
 ## Intervalle de rafraîchissement
@@ -34,7 +34,7 @@ Depuis la version 0.4.0, la bibliothèque HydroqC fournit désormais la mise en 
 | HQ2M_CONTRACTS_0_CUSTOMER | string | `'0987654321'` | Numéro de client visible sur votre facture. **10 chiffres, vous devez possiblement ajouter un 0 au début** Ex: '987 654 321' deviendra '0987654321'|
 | HQ2M_CONTRACTS_0_ACCOUNT | string | `'654321987654'` | Numéro de compte visible sur votre facture. |
 | HQ2M_CONTRACTS_0_CONTRACT | string | `'0123456789'` | Numéro de contrat visible sur votre facture. **10 chiffres, vous devez possiblement ajouter un 0 au début** Ex: '123 456 789' deviendra '0123456789'
-
+| HQ2M_CONTRACTS_0_PREHEAT_DURATION_MINUTES | string | `'180'` | Durée désiré de la période de préchauffage'
 
 ## Variables pour Home-Assistant
 
