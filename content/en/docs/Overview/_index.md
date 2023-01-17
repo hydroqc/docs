@@ -37,8 +37,3 @@ It also includes a separate logic that sends the hourly consumption statistics t
 
 The Home-Assistant addon wraps the hydroqc2mqtt daemon in a nice package to be used in Home-Assistant
 
-### Third party projects using the library
-
-The following projects are using the hydroqc library
-
-- [webtio-hydroqc-addon](https://github.com/Bad-Wolf-developpement/webtio-hydroqc-addon): Add-on for the webthings platform

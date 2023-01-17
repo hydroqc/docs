@@ -37,8 +37,3 @@ Il comprend également une logique distincte qui envoie les statistiques de cons
 
 L'addon Home-Assistant intégre Hydroqc2MQTT dans un interface convivial à utiliser dans Home-Assistant
 
-### Projets exploitant la bibliothèque HydroQC
-
-Les projets suivants font l'utilisation de la librairie HydroQC:
-
-- [webtio-hydroqc-addon](https://github.com/Bad-Wolf-developpement/webtio-hydroqc-addon): Add-on pour la plateforme webthings
