@@ -25,3 +25,4 @@ lastmod: 2022-12-21T20:26:46.748Z
 | Current billing period lower price consumption | 1149 kWh | Consommation dans la braquette de prix basse |
 | Current billing period higher price consumption | 0 kWh | Consommation dans la braquette de prix élevée |
 | Current period epp enabled | On/Off | Inscription au mode de versement égaux |
+| Next or current outage | timestamp | Information sur la prochaine panne prévue ou panne imprévue en cours |

@@ -25,3 +25,4 @@ lastmod: 2022-12-21T20:27:36.262Z
 | Current billing period lower price consumption | 1149 kWh | Consumption in the lower price bracket |
 | Current billing period higher price consumption | 0 | Consumption in the higher price bracket |
 | Current period epp enabled | On/Off | If you are subscribed to Equal Payment Plan |
+| Next or current outage | timestamp | Information on the next planned outage or the status or the current unplanned outage |
