@@ -9,7 +9,7 @@ lastmod: 2022-09-20T23:47:28.801Z
 
 Les termes suivants sont utilisés dans ce module et proviennent autant que possible du document officiel des taux d'électricité hydro-quebec (page 31):
 
-[https://www.hydroquebec.com/data/documents-donnees/pdf/electricity-rates.pdf](https://www.hydroquebec.com/data/documents-donnees/pdf/electricity-rates.pdf)
+[https://www.hydroquebec.com/data/documents-donnees/pdf/tarifs-electricite.pdf](https://www.hydroquebec.com/data/documents-donnees/pdf/tarifs-electricite.pdf#page=37)
 
 et du document de la “Régie de l’énergie” :
 
