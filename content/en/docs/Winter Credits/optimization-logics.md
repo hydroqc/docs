@@ -89,35 +89,3 @@ graph TD
 	      PeakEnd[Peak end<br/>9AM or 8PM] --> Normal
 	      AnchorEnd[Anchor end<br/>4AM or 2PM] --> Normal(Normal consumption)
 ```
-
-
-### Maximum Credits Optimisation
-
-{{< alert color="warning" title="Warning" >}}If implemented without a thourough analysis of its impact, this logic may endup increasing your consumption, partially offsetting your winter credit savings. It may also result in higher EPP payment at your next revision, even if your Winter Credits offset that increase.
-
-We do not encourage you to use it as it is a bit against the spirit of the winter credit program. The Long term anchor optimisation descibed above is safer to implement and more inline with the objectives of the program.{{< /alert >}}
-
-This optimisation logic is the one that will give you the highest returns from the winter credits program.
-
-This logic involves moving your consumption not only on days when there is a critical peak event but everyday in order to influence the reference period that is used to estimate the energy offset during critical peak period.
-
-
-
-```mermaid
-graph TD
-	      NormalStart[Normal consumption] -->PeakStart & AnchorStart
-	      PeakStart[Peak start<br/>6h ou 16h] -->PeakCritical{Critical?}
-	      PeakCritical -->|Yes| PeakLowCon[Reduce consumption] 
-	      PeakCritical -->|No| PeakHighCon[Increase consumption]
-	  
-	      AnchorStart[Anchor Start<br/>1AM or 11AM] -->AnchorCritical{Critical?}
-	      AnchorCritical -->|No| AnchorLowCon[Reduce consumption]
-	      AnchorCritical -->|Yes| AnchorHighCon[Increase consumption]
-	      
-	      PeakHighCon --> PeakEnd
-	      PeakLowCon --> PeakEnd
-	      AnchorHighCon --> AnchorEnd
-	      AnchorLowCon --> AnchorEnd
-	      PeakEnd[Peak end<br/>9AM or 8PM] --> Normal
-	      AnchorEnd[Anchor end<br/>4AM or 2PM] --> Normal(Normal consumption)
-```

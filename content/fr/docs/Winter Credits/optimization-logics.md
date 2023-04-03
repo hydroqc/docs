@@ -89,36 +89,3 @@ graph TD
   PeakEnd[Fin de pointe<br/>9h ou 20h] --> Normal
   AnchorEnd[Fin d'ancrage<br/>4h ou 14h] --> Normal(Consommation Normale)
 ```
-
-### Hyper optimisation des crédits
-
-{{< alert color="warning" title="Avertissement" >}}Si elle est mise en œuvre sans une analyse de son impact, cette logique peut avoir pour effet d'augmenter votre consommation, compensant partiellement vos économies de crédit hivernaux. Cela peut également entraîner une augmentation des paiement du mode de versement égaux (MVE) lors de votre prochaine révision, même si vos crédits hivernaux compensent cette augmentation.
-
-Nous ne vous encourageons pas à l'utiliser car elle va à l'encontre de l'esprit du programme de crédits hivernaux. L'optimisation à long terme de des ancrages décrit ci-dessus est plus sûre à mettre en œuvre et plus en ligne avec les objectifs du programme.{{< /alert >}}
-
-Cette logique d'optimisation est celle qui vous donnera les rendements les plus élevés du programme de crédits hivernaux mais comporte un risque d'augmentation de votre consomation.
-
-Cette logique implique de déplacer votre consommation non seulement les jours où il y a un événement de pointe critique mais à tous les jours afin d'influencer la période de référence qui est utilisée pour estimer l'effacement d'énergie pendant la période de pointe critique.
-
-Ultimement, il s'agit de déplacé l'énergie consommée lors des périodes d'ancrages non-critique vers les périodes de pointe non-critiques.
-
-
-
-```mermaid
-graph TD
-  NormalStart[Consommation Normale] -->PeakStart & AnchorStart
-  PeakStart[Début pointe<br/>6h ou 16h] -->PeakCritical{Critique?}
-  PeakCritical -->|Oui| PeakLowCon[Réduire consommation] 
-  PeakCritical -->|Non| PeakHighCon[Augmente la consommation]
-
-  AnchorStart[Début Ancrage<br/>1h ou 11h] -->AnchorCritical{Critique?}
-  AnchorCritical -->|Non| AnchorLowCon[Réduire la consommation]
-  AnchorCritical -->|Oui| AnchorHighCon[Augmente la consommation]
-  
-  PeakHighCon --> PeakEnd
-  PeakLowCon --> PeakEnd
-  AnchorHighCon --> AnchorEnd
-  AnchorLowCon --> AnchorEnd
-  PeakEnd[Fin de pointe<br/>9h ou 20h] --> Normal
-  AnchorEnd[Fin d'ancrage<br/>4h ou 14h] --> Normal(Consommation Normale)
-```
