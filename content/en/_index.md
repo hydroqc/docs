@@ -9,7 +9,7 @@ description = "Integrate your home automation platform, such as Home-Assistant, 
 <div class="mx-auto">
 	<p class="lead mt-5">A collection of open-source tools to retrieve information from your Hydro-Québec account</p>
 	<br>
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/docs"W>
+	<a class="btn btn-lg btn-primary mr-3 mb-4" href="./docs"W>
 		Documentation <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://gitlab.com/hydroqc">

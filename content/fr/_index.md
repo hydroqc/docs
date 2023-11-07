@@ -11,7 +11,7 @@ date = "2023-01-18T18:47:21.352Z"
 <div class="mx-auto">
 	<p class="lead mt-5">Une collection d'outils open source pour récupérer les informations de votre compte Hydro-Québec.</p>
 	<br>
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/docs">
+	<a class="btn btn-lg btn-primary mr-3 mb-4" href="./docs">
 		Documentation <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://gitlab.com/hydroqc">
