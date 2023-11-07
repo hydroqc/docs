@@ -61,21 +61,20 @@ id = "G-HGJB06F9HS"
 
 [languages]
 [languages.en]
-title = "HydroQC"
-
 languageName ="English"
 contentDir = "content/en"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
+title = "HydroQC"
 description = "HydroQC documentation"
 
 [languages.fr]
-title = "HydroQC"
 languageName ="Français"
 contentDir = "content/fr"
 
 [languages.fr.params]
+title = "HydroQC"
 time_format_default = "2006-01-02"
 description = "Documentation HydroQC"
 
@@ -209,7 +208,12 @@ enable = false
 
 [module]
 proxy = "direct"
+[module.hugoVersion]
+  extended = true
+  min = "0.110.0"
 [[module.imports]]
-path = "github.com/google/docsy"
+  path = "github.com/google/docsy"
+  disable = false
 [[module.imports]]
-path = "github.com/google/docsy/dependencies"
+  path = "github.com/google/docsy/dependencies"
+  disable = false
