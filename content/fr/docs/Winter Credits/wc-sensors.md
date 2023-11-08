@@ -4,7 +4,7 @@ linkTitle: Capteurs crédit hivernaux
 weight: 47
 description: |
   Description des capteurs crédit hivernaux
-lastmod: 2022-12-22T15:13:21.045Z
+lastmod: 2023-11-08T16:49:59.897Z
 ---
 
 ## Description des capteurs
@@ -26,5 +26,4 @@ Voici la description de certains des capteurs en liens avec les crédits hiverna
 | wc upcoming critical peak today/tomorrow morning/evening | true/false | Est-ce qu'il y a une pointe critique planifiée dans la période spécifiée.Restera true/false jusqu'à la fin de la journée en question |
 | wc yesterday morning/evening * | various | Les valeurs (crédit, énergie de référence, énergie effacée, consommation réelle) pour les pointes critiques qui se sont produits hier. Ne sera pas disponible s'il n'y avait pas de pointe critique la veille. |
 | wc critical | true/false | Sera true de la fin de la dernière pointe à la fin de la prochaine pointe si la prochaine pointe est critique. Puisqu'il s'agit d'un double de "Next Peak Critical", il sera éventuellement supprimé |
-
-
+| pre-heat in progress | true/false | Vrai durant la période de pré-chauffage |
