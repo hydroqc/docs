@@ -4,7 +4,8 @@ linkTitle: Energy Dashboard
 weight: 25
 description: |
   Configurations of the Home-Assistant Energy Dashboard
-lastmod: 2022-12-21T20:31:51.482Z
+lastmod: 2023-11-08T00:33:32.144Z
+date: 2023-11-08T00:33:30.524Z
 ---
 
 ## Hourly Consumption in Energy Dashboard

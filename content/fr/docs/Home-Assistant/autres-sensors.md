@@ -4,7 +4,8 @@ linkTitle: Autres configurations
 weight: 30
 description: |
   Configurations spécifiques à Home-Assistant
-lastmod: 2022-12-21T20:31:51.482Z
+lastmod: 2023-11-08T00:32:34.288Z
+date: 2023-11-08T00:32:46.820Z
 ---
 
 ## Survol

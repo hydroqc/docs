@@ -4,7 +4,8 @@ linkTitle: Other sensors
 weight: 30
 description: |
   Sensors not provided by Hydroqc but related to Hydro-Québec
-lastmod: 2022-12-21T20:31:51.482Z
+lastmod: 2023-11-08T00:33:39.689Z
+date: 2023-11-08T00:33:37.496Z
 ---
 
 ## Overview

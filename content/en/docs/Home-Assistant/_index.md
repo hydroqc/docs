@@ -5,6 +5,7 @@ weight: 20
 description: |
   Home-Assistant specific configurations
 aliases:
-  - "./home-assistant-specific/"
-lastmod: 2022-09-20T13:08:04.762Z
+  - /en/docs/configuration/home-assistant-specific/
+lastmod: 2023-11-08T00:33:22.196Z
+date: 2023-11-08T00:33:20.196Z
 ---
