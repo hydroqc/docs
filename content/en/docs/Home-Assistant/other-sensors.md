@@ -27,6 +27,7 @@ The following sensor configuration retrieves the current electricity demand on t
   unit_of_measurement: MW
   device_class: power
   state_class: measurement
+  ssl_cipher_list: intermediate
   value_template: >
    {% set index =  value_json.indexDonneePlusRecent %}
    {{ value_json.details[index]["valeurs"]["demandeTotal"] }}
