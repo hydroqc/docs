@@ -1,6 +1,6 @@
 ---
-title: Winter credits
-linkTitle: Winter credits
+title: Winter Credits
+linkTitle: Winter Credits
 weight: 45
 description: |
   Information on integrating Hydro-Quebec Winter Credit to your home automation system.
