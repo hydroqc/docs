@@ -1,12 +1,47 @@
 {
-	"name": "Hydroqc Docs",
-	"image": "registry.gitlab.com/hydroqc/hydroqc-base-container/3.11:latest",
+	"name": "HydroQC Docs - Hugo with Docsy",
+	"image": "mcr.microsoft.com/devcontainers/base:debian",
 	"features": {
-		"ghcr.io/devcontainers/features/hugo:1": {},
-		"ghcr.io/devcontainers/features/go:1": {}
+		"ghcr.io/devcontainers/features/hugo:1": {
+			"extended": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "1.21"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/git:1": {}
 	},
 	"forwardPorts": [1313],
-	"remoteUser": "devcontainer",
-	"postCreateCommand": "hugo server --disableFastRender"
-
+	"portsAttributes": {
+		"1313": {
+			"label": "Hugo Server",
+			"onAutoForward": "notify"
+		}
+	},
+	"postCreateCommand": "npm install && go mod download && sudo apt-get update -qq && sudo apt-get install -y poppler-utils",
+	"postStartCommand": "hugo server --bind 0.0.0.0 --disableFastRender --navigateToChanged",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"budparr.language-hugo-vscode",
+				"eliostruyf.vscode-front-matter",
+				"davidanson.vscode-markdownlint"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"[markdown]": {
+					"editor.wordWrap": "on",
+					"editor.quickSuggestions": {
+						"other": false,
+						"comments": false,
+						"strings": false
+					}
+				}
+			}
+		}
+	},
+	"remoteUser": "vscode"
 }
