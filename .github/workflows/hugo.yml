@@ -57,7 +57,7 @@ jobs:
       - name: Download Hugo modules
         run: hugo mod get
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm install
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
