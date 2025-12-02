@@ -214,6 +214,8 @@ grep -r "^---$" content/ # Should find paired delimiters
 diff -r content/en/docs content/fr/docs --brief
 ```
 
+When interacting with Github you should use the MCP-Server for github.
+
 ## Common Tasks
 
 ### Adding a New Documentation Page
