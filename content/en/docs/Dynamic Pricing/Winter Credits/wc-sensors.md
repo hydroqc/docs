@@ -17,9 +17,10 @@ Here is the description of some of the sensors we provide that we feel needed mo
 |Default HA name and MQTT Topic | Values | Description |
 |-|-|-|
 |Current period state for winter credit / current wc period detail | anchor / normal / peak / critical_anchor / critical_peak | Current period name and state|
-| wc next anchor start / end | timestamp | The timestamp for the next anchor period start and end. Can be used as triggers in home-assistant automations. Will always have a value |
-| wc next peak start / end | timestamp | The timestamp for the next peak period start and end. Can be used as triggers in home-assistant automations. Will always have a value |
-| wc next critical peak start / end | timestamp | The timestamp for the next critical peak period start and end. Can be used as triggers in home-assistant automations. Will be "Unavailable" when the next peak event is not critical |
+| wc next anchor start / end | timestamp | The timestamp for the next anchor period start and end. Can be used as triggers in home-assistant automations. **Attribute `critical`** indicates if the anchor is linked to a critical peak. |
+| wc next peak start / end | timestamp | The timestamp for the next peak period start and end. Can be used as triggers in home-assistant automations. **Attribute `critical`** indicates if the peak is critical. |
+| wc next pre-heat start | timestamp | The timestamp for the next pre-heat period start. Can be used as a trigger in home-assistant automations. **Attribute `critical`** indicates if the pre-heat is for a critical peak. |
+| wc next critical peak start / end | timestamp | The timestamp for the next **critical** peak period start and end. Can be used as triggers in home-assistant automations. Will be "Unavailable" when the next peak event is not critical |
 | wc upcoming_critical_peak | true/false | Is there any critical peak in the future. Will be true as soon as we detect an announcement from Hydro and will return to false once there is no critical peak in the future.|
 | wc critical peak in progress | true/false | Are we in a critical peak right now.|
 | wc next anchor critical | true/false | Is the next anchor period linked to a critical peak. Will be true from the end of the last peak to the end of the next peak if the next peak is critical.|

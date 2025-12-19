@@ -120,9 +120,14 @@ L'intégration crée des capteurs pour:
 - **Facturation**: Solde, montant projeté
 - **Événements de pointe**: Statut actuel, prochain événement
 - **Crédits hivernaux**: Événements et projections
+- **Calendrier**: Synchronisation automatique des événements de pointe critiques vers un calendrier local (tarifs DPC et DCPC uniquement - vous devez créer votre propre calendrier local dans Home Assistant)
 - **Pannes**: Pannes actuelles dans votre région
 
 Consultez la section [Capteurs Home Assistant](../../home-assistant/) pour des informations détaillées sur les capteurs.
+
+{{% alert color="info" title="Calendrier Local Requis" %}}}
+Pour les tarifs DPC (Flex-D) et DCPC (Crédits Hivernaux), vous devez créer un calendrier local dans Home Assistant avant de configurer l'intégration. L'intégration synchronisera les événements de pointe critiques vers ce calendrier. Consultez la documentation des blueprints pour les instructions détaillées.
+{{% /alert %}}
 
 ## Dépannage
 

@@ -120,9 +120,14 @@ The integration creates sensors for:
 - **Billing**: Balance, projected amount
 - **Peak Events**: Current status, next event
 - **Winter Credits**: Events and projections
+- **Calendar**: Automatic synchronization of critical peak events to a local calendar (DPC and DCPC rates only - you must create your own local calendar in Home Assistant)
 - **Outages**: Current outages in your area
 
 See the [Home Assistant Sensors](../../home-assistant/) section for detailed sensor information.
+
+{{% alert color="info" title="Local Calendar Required" %}}}
+For DPC (Flex-D) and DCPC (Winter Credits) rates, you must create a local calendar in Home Assistant before configuring the integration. The integration will sync critical peak events to this calendar. See the blueprint documentation for detailed instructions.
+{{% /alert %}}
 
 ## Troubleshooting
 
