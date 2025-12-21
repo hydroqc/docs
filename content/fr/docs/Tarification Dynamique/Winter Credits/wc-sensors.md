@@ -17,9 +17,10 @@ Voici la description de certains des capteurs en liens avec les crédits hiverna
 | Nom du capteur | Valeurs | Description |
 |-|-|-|
 |Current period state for winter credit / current wc period detail | anchor / normal / peak / critical_anchor / critical_peak | Nom de la période et état actuel|
-| wc next anchor start / end | timestamp | L'heure où la prochaine période d'ancrage commence et se termine. Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. |
-| wc next peak start / end | timestamp | L'heure où la prochaine période de pointe commence et se termine.Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. |
-| wc next critical peak start / end | timestamp | L'heure où la prochaine période de pointe commence et se termine.Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. Sera "Indisponible" si la prochaine pointe n'est pas critique |
+| wc next anchor start / end | timestamp | L'heure où la prochaine période d'ancrage commence et se termine. Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. **Attribut `critical`** indique si l'ancrage est lié à une pointe critique. |
+| wc next peak start / end | timestamp | L'heure où la prochaine période de pointe commence et se termine. Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. **Attribut `critical`** indique si la pointe est critique. |
+| wc next pre-heat start | timestamp | L'heure où la prochaine période de pré-chauffage commence. Peut être utilisé comme déclencheur dans les automatisations Home-Assistant. **Attribut `critical`** indique si le pré-chauffage est pour une pointe critique. |
+| wc next critical peak start / end | timestamp | L'heure où la prochaine période de pointe **critique** commence et se termine. Peut être utilisé comme déclencheurs dans les automatisations Home-Assistant. Sera "Indisponible" si la prochaine pointe n'est pas critique |
 | wc upcoming_critical_peak | true/false | Y a-t-il une pointe critique à venir.Sera True dès que nous détecterons une annonce d'Hydro-Québec et reviendra à False une fois qu'il n'y aura pas de pointe critique à venir.|
 | wc critical peak in progress | true/false | Sommes-nous dans une pointe critique en ce moment.|
 | wc next anchor critical | true/false | Est-ce que la prochaine période d'ancrage est liée à une pointe critique? Sera true de la fin de la dernière pointe à la fin de la prochaine pointe si la prochaine pointe est critique.|

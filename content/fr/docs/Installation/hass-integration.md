@@ -78,7 +78,9 @@ Cliquez sur le badge ci-dessus pour ajouter automatiquement ce dépôt à HACS, 
    - **Mot de passe** : Votre mot de passe Hydro-Québec
    - **Nom du contrat** : Nom convivial (ex: "Maison", "Chalet")
 6. Sélectionnez le contrat à surveiller dans la liste
-7. Terminé ! Les capteurs apparaîtront dans ~60 secondes
+7. Choisissez le nombre de jours d'historique de consommation à importer (0-800 jours)
+8. Activez ou désactivez la synchronisation de consommation (activée par défaut)
+9. Terminé ! Les capteurs apparaîtront dans ~60 secondes
 
 **Fonctionnalités avec compte:**
 - Données de consommation actuelles et historiques
@@ -86,6 +88,10 @@ Cliquez sur le badge ci-dessus pour ajouter automatiquement ce dépôt à HACS, 
 - Crédits hivernaux et événements de pointe
 - Notifications de pannes
 - Intégration au tableau de bord énergétique
+
+{{% alert color="info" title="Synchronisation de Consommation" %}}
+La synchronisation de consommation importe les données de consommation horaires vers le tableau de bord énergétique de Home Assistant. Vous pouvez la désactiver si vous n'avez pas besoin du suivi de consommation historique ou si vous souhaitez réduire les appels API. Ce paramètre peut être modifié ultérieurement dans les options de l'intégration.
+{{% /alert %}}
 
 ### Option 2 : Données de pointe uniquement (Aucun compte requis)
 
@@ -96,13 +102,17 @@ Pour les utilisateurs qui souhaitent uniquement les informations sur les périod
 3. Recherchez **Hydro-Québec**
 4. Sélectionnez **"Données de pointe uniquement (aucun compte)"**
 5. Choisissez votre secteur tarifaire et votre plan
-6. Configurez la durée de préchauffage pour les événements de pointe
+6. Terminé ! Les capteurs apparaîtront sous peu
 
 **Fonctionnalités sans compte:**
 - Notifications d'événements de pointe
 - Informations sur la tarification dynamique
 - Pas de suivi de consommation
 - Pas d'informations de facturation
+
+{{% alert color="info" title="Durée de Préchauffage" %}}
+La durée de préchauffage peut être configurée dans les options de l'intégration après la configuration. Cela détermine combien de temps à l'avance vous serez notifié avant le début d'un événement de pointe (par défaut : 120 minutes).
+{{% /alert %}}
 
 ### Configuration multi-contrats
 
@@ -120,9 +130,14 @@ L'intégration crée des capteurs pour:
 - **Facturation**: Solde, montant projeté
 - **Événements de pointe**: Statut actuel, prochain événement
 - **Crédits hivernaux**: Événements et projections
+- **Calendrier**: Synchronisation automatique des événements de pointe critiques vers un calendrier local (tarifs DPC et DCPC uniquement - vous devez créer votre propre calendrier local dans Home Assistant)
 - **Pannes**: Pannes actuelles dans votre région
 
 Consultez la section [Capteurs Home Assistant](../../home-assistant/) pour des informations détaillées sur les capteurs.
+
+{{% alert color="info" title="Calendrier Local Requis" %}}}
+Pour les tarifs DPC (Flex-D) et DCPC (Crédits Hivernaux), vous devez créer un calendrier local dans Home Assistant avant de configurer l'intégration. L'intégration synchronisera les événements de pointe critiques vers ce calendrier. Consultez la documentation des blueprints pour les instructions détaillées.
+{{% /alert %}}
 
 ## Dépannage
 

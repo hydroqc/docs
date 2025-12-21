@@ -78,7 +78,9 @@ Click the badge above to automatically add this repository to HACS, then:
    - **Password**: Your Hydro-Québec password
    - **Contract Name**: Friendly name (e.g., "Home", "Cottage")
 6. Select the contract to monitor from the list
-7. Done! Sensors will appear in ~60 seconds
+7. Choose how many days of consumption history to import (0-800 days)
+8. Enable or disable consumption sync (enabled by default)
+9. Done! Sensors will appear in ~60 seconds
 
 **Features with account:**
 - Current and historical consumption data
@@ -86,6 +88,10 @@ Click the badge above to automatically add this repository to HACS, then:
 - Winter credits and peak events
 - Outage notifications
 - Energy dashboard integration
+
+{{% alert color="info" title="Consumption Sync" %}}
+Consumption sync imports hourly consumption data to the Home Assistant Energy dashboard. You can disable this if you don't need historical consumption tracking or want to reduce API calls. This can be changed later in the integration options.
+{{% /alert %}}
 
 ### Option 2: Peak Data Only (No Account Required)
 
@@ -96,13 +102,17 @@ For users who only want peak period information without logging in:
 3. Search for **Hydro-Québec**
 4. Select **"Peak data only (no account)"**
 5. Choose your rate sector and plan
-6. Configure peak event preheat duration
+6. Done! Sensors will appear shortly
 
 **Features without account:**
 - Peak event notifications
 - Dynamic pricing information
 - No consumption tracking
 - No billing information
+
+{{% alert color="info" title="Preheat Duration" %}}
+The preheat duration can be configured in the integration options after setup. This determines how far in advance you'll be notified before a peak event starts (default: 120 minutes).
+{{% /alert %}}
 
 ### Multi-Contract Setup
 
@@ -120,9 +130,14 @@ The integration creates sensors for:
 - **Billing**: Balance, projected amount
 - **Peak Events**: Current status, next event
 - **Winter Credits**: Events and projections
+- **Calendar**: Automatic synchronization of critical peak events to a local calendar (DPC and DCPC rates only - you must create your own local calendar in Home Assistant)
 - **Outages**: Current outages in your area
 
 See the [Home Assistant Sensors](../../home-assistant/) section for detailed sensor information.
+
+{{% alert color="info" title="Local Calendar Required" %}}}
+For DPC (Flex-D) and DCPC (Winter Credits) rates, you must create a local calendar in Home Assistant before configuring the integration. The integration will sync critical peak events to this calendar. See the blueprint documentation for detailed instructions.
+{{% /alert %}}
 
 ## Troubleshooting
 

@@ -10,6 +10,10 @@ date: 2023-11-08T00:33:04.684Z
 
 ## Consommation horaire dans le tableau de bord énergétique
 
+{{% alert color="info" title="Désactiver la synchronisation de consommation" %}}
+Si vous n'avez pas besoin du suivi de consommation ou utilisez une autre intégration pour cela, vous pouvez désactiver la synchronisation de consommation lors de la configuration initiale ou dans les options de l'intégration. Cela empêchera la création des capteurs de consommation et désactivera le service de synchronisation d'historique.
+{{% /alert %}}
+
 {{% alert color="warning"%}}**La consommation horaire d'Hydro-Québec n'est pas en direct.** La consommation horaire se synchronisera automatiquement lorsqu'elle sera disponible auprès d'Hydro-Québec. Dans le portail web d'Hydro-Québec, vous ne pouvez voir la consommation horaire que de la veille.Avec Hydroqc2MQTT, vous pourrez parfois voir la consommation du jour en cours. Il y a toujours un retard de quelques heures avant la publication des données.{{% /alert %}}
 
 Lorsque vous activez la synchronisation de la consommation horaire, un ou plusiseurs capteur est créé dans Home-Assistant nommé "*_hourly consumption" selon votre tarif.
@@ -31,18 +35,68 @@ Pour les tarif FlexD et Bi-Énergie vous pouvez mettre les capteurs "High price 
 
 ## Historique de consommation d'énergie
 
-L'activation de l'option ci-dessus synchronisera la consommation des deux derniers jours et toutes les données de consommation futures disponibles.
+### Configuration Initiale
 
-Sur l'appareil `hydroqc_maison`, vous trouverez également un moyen d'importer les données historiques de consommation horaire des deux dernières années.
+L'activation de la synchronisation de consommation horaire durant la configuration de l'intégration **hydroqc-ha** synchronisera automatiquement:
+- Les données des **30 derniers jours** via la synchronisation régulière (efficace et rapide)
+- Pour plus de 30 jours : importation CSV automatique en arrière-plan lors de la configuration initiale
 
-![img](/images/configuration/home-assistant-2.png)
+### Importation Manuelle de l'Historique
 
-Le bouton Clear supprimera tous l'historique horaire de consommation. Cela peut être utile si vous avez un problème avec l'historique importé.
+L'intégration **hydroqc-ha** fournit un service Home Assistant pour importer manuellement l'historique de consommation horaire jusqu'à **2 ans en arrière**.
 
-L'option de jours à synchroniser vous permet de définir la période pour laquelle vous souhaitez importer l'historique. Nos tests montrent que l'importation échoue lorsque vous reculez plus de 2 ans dans le passé. Vous pouvez également utiliser cette option pour refaire un import de l'historique si, pour une raison quelconque, il vous manque quelques jours dans votre historique récente.
+**Service** : `hydroqc.sync_consumption_history`
 
-Le commutateur nommé "Sync hourly consumption history" doit être activé lorsque vous souhaitez démarrer la synchronisation.
+**Paramètres** :
+- `days_back` : Nombre de jours à importer (défaut: 731 jours = ~2 ans)
+- `device_id` : L'appareil HydroQC correspondant à votre contrat
 
-{{% alert color="warning"%}}La synchronisation de l'historique peut prendre une heure ou plus pour terminer et entraîne souvent des erreurs. C'est normal, ne réactivez pas le bouton de synchronisation d'historique plusieurs fois d'affilée sans redémarrer d'abord Hydroqc2MQTT{{% /alert %}}
+**Utilisation dans les Actions** :
 
-Lorsque l'importation sera terminée, le commutateur reviendra à l'état désactivé. **Vous ne devriez l'allumer qu'une seule fois, il n'y a aucun avantage à faire une resynchronisation de l'historique si elle est déjà importée.**
+```yaml
+action: hydroqc.sync_consumption_history
+data:
+  days_back: 365  # Importer la dernière année
+target:
+  device_id: <votre_device_id>
+```
+
+**Depuis l'interface** :
+
+1. Allez dans **Outils pour développeurs** → **Services**
+2. Sélectionnez le service **HydroQC: Sync consumption history**
+3. Sélectionnez votre appareil HydroQC
+4. Spécifiez le nombre de jours (optionnel, défaut: 731)
+5. Cliquez sur **Appeler le service**
+
+{{% alert color="warning" title="Important" %}}}
+- L'importation s'exécute en **arrière-plan** et peut prendre **30 minutes à 1 heure** selon la quantité de données
+- N'exécutez pas le service plusieurs fois consécutivement - attendez que l'importation précédente se termine
+- Vérifiez les logs Home Assistant pour suivre la progression
+- L'importation utilise l'API CSV d'Hydro-Québec (plus efficace pour de grandes périodes)
+{{% /alert %}}
+
+### hydroqc2mqtt (Hérité)
+
+Si vous utilisez encore **hydroqc2mqtt**, l'ancienne méthode avec boutons et switches reste disponible sur l'appareil `hydroqc_maison`.
+
+### Gestion des Statistiques
+
+Si vous avez besoin de corriger ou supprimer des statistiques de consommation horaire (par exemple, après une importation incorrecte), vous pouvez le faire via les **Outils pour développeurs** de Home Assistant :
+
+**Accéder aux statistiques** :
+
+1. Allez dans **Outils pour développeurs** → **Statistiques**
+2. Recherchez vos capteurs de consommation horaire (ex: `sensor.home_total_hourly_consumption`)
+3. Cliquez sur le capteur pour voir toutes les statistiques enregistrées
+
+**Ajuster ou supprimer une statistique** :
+
+1. Cliquez sur le bouton **Ajuster la somme** pour corriger une valeur incorrecte
+2. Ou sélectionnez une plage de dates et cliquez sur **Supprimer** pour effacer les données d'une période spécifique
+3. Les modifications prendront effet immédiatement dans le tableau de bord énergétique
+
+{{% alert color="warning" title="Attention" %}}}
+La suppression de statistiques est **permanente** et ne peut pas être annulée. Assurez-vous de bien vouloir supprimer les données avant de confirmer. Si vous supprimez l'historique par erreur, vous devrez réimporter les données via le service `hydroqc.sync_consumption_history`.
+{{% /alert %}}
+
